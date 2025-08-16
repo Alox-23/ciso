@@ -18,5 +18,6 @@ Vector2 normalize(Vector2 v);
 Vector2 add(Vector2 v1, Vector2 v2);
 Vector2 scale(Vector2 v1, double s);
 Vector2 rotate(Vector2 v, double theta);
+Vector2 isometric_to_screen(Vector3 vi, Vector2 s);
 
 #endif 

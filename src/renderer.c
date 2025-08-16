@@ -1,6 +1,8 @@
 #include "../include/renderer.h"
 #include "../include/player.h"
 #include "../include/map.h"
+#include "../include/texturemanager.h"
+#include "../include/utils.h"
 
 Renderer* renderer_create(){
   Renderer* renderer = malloc(sizeof(Renderer));
@@ -21,7 +23,14 @@ Renderer* renderer_create(){
     printf("SDL_CreateRenderer error: %s\n", SDL_GetError());
     return NULL;
   }
- 
+
+  renderer->texture_manager = texturemanager_create(5, renderer->sdl_renderer, 32, 32);
+  if (!renderer->texture_manager){
+    return NULL;
+  }
+
+  texturemanager_add_texture(renderer->texture_manager, renderer->sdl_renderer, "assets/green-cube.png");
+  
   return renderer;
 }
 
@@ -36,13 +45,20 @@ void renderer_render_map_2d(Renderer *renderer, Map *map){
     for (size_t x = 0; x < map->width; x++){
       int map_val = map_get_value(map, x, y);
       if (map_val){
-        map->rect.x = x * renderer->scale_2d;
-        map->rect.y = y * renderer->scale_2d;
-        map->rect.w = renderer->scale_2d;
-        map->rect.h = renderer->scale_2d;
-
-        SDL_SetRenderDrawColor(renderer->sdl_renderer, 0, 100*map_val, 0, 255);
-        SDL_RenderDrawRect(renderer->sdl_renderer, &map->rect);
+        Vector3 vi;
+        vi.x = x;
+        vi.y = y;
+        vi.z = y * x;
+        Vector2 s;
+        s.x = 32;
+        s.y = 32;
+        Vector2 vs = isometric_to_screen(vi, s);
+        rect.x = vs.x;
+        rect.y = vs.y;
+        rect.w = 32;
+        rect.h = 32;
+        
+        SDL_RenderCopy(renderer->sdl_renderer, texturemanager_get_texture(renderer->texture_manager, map_val), NULL, &rect);
       }
     }
   }
@@ -87,6 +103,7 @@ void renderer_destroy(Renderer *renderer){
 
   SDL_DestroyWindow(renderer->window);
   SDL_DestroyRenderer(renderer->sdl_renderer);
+  texturemanager_destroy(renderer->texture_manager);
   free(renderer);
   renderer = NULL;
 }
