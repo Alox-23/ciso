@@ -34,13 +34,18 @@ Renderer* renderer_create(){
   return renderer;
 }
 
-void renderer_render_map_2d(Renderer *renderer, Map *map){
+void renderer_render_map_iso(Renderer *renderer, Map *map){
   if (!renderer || !map){
     printf("worng renderer or map parameter in render_map2d_Renderer");
     return;
   }
 
   SDL_Rect rect;
+  rect.w = 32;
+  rect.h = 32;
+  Vector2 s;
+  s.x = 32;
+  s.y = 32;
   for (size_t y = 0; y < map->height; y++){
     for (size_t x = 0; x < map->width; x++){
       int map_val = map_get_value(map, x, y);
@@ -49,14 +54,9 @@ void renderer_render_map_2d(Renderer *renderer, Map *map){
         vi.x = x;
         vi.y = y;
         vi.z = y * x;
-        Vector2 s;
-        s.x = 32;
-        s.y = 32;
         Vector2 vs = isometric_to_screen(vi, s);
         rect.x = vs.x;
-        rect.y = vs.y;
-        rect.w = 32;
-        rect.h = 32;
+        rect.y = vs.y; 
         
         SDL_RenderCopy(renderer->sdl_renderer, texturemanager_get_texture(renderer->texture_manager, map_val), NULL, &rect);
       }
@@ -90,7 +90,7 @@ void renderer_render(Renderer *renderer, Player *player, Map *map){
   SDL_SetRenderDrawColor(renderer->sdl_renderer, 0, 0, 0, 255);
   SDL_RenderClear(renderer->sdl_renderer);
 
-  renderer_render_map_2d(renderer, map);
+  renderer_render_map_iso(renderer, map);
   renderer_render_player_2d(renderer, player);
   
   SDL_RenderPresent(renderer->sdl_renderer);
