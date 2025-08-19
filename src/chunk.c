@@ -79,6 +79,4 @@ void chunk_update_cache(Chunk* chunk, SDL_Renderer* renderer, TextureManager* te
 void chunk_destroy_chunk(Chunk* chunk){
   if (!chunk) return;
   SDL_DestroyTexture(chunk->cached_texture);
-  free(chunk);
-  chunk = NULL;
 }

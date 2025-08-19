@@ -86,6 +86,7 @@ void renderer_destroy(Renderer *renderer){
   }
   SDL_DestroyWindow(renderer->window);
   SDL_DestroyRenderer(renderer->sdl_renderer);
+  chunk_destroy_chunk(&renderer->chunk);
   texturemanager_destroy(renderer->texture_manager);
   free(renderer);
   renderer = NULL;

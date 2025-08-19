@@ -30,7 +30,6 @@ TextureManager* texturemanager_create(size_t num_textures, SDL_Renderer* rendere
     return NULL;
   }
   
-  
   SDL_Surface* surface = IMG_Load("assets/default.png");
   if (!surface){
     printf("Error loading img SDL_Error : %s\n", IMG_GetError());
@@ -59,6 +58,7 @@ TextureManager* texturemanager_create(size_t num_textures, SDL_Renderer* rendere
   texture_manager->textures[0] = resized_texture;
 
   SDL_DestroyTexture(original_texture);
+  SDL_FreeSurface(surface);
 
   return texture_manager;
 }
@@ -109,6 +109,7 @@ int texturemanager_add_texture(TextureManager* texture_manager, SDL_Renderer* re
   texture_manager->textures[texture_manager->texture_count] = resized_texture;
 
   SDL_DestroyTexture(original_texture);
+  SDL_FreeSurface(surface);
 
   return texture_manager->texture_count;
 }

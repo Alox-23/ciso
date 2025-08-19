@@ -32,8 +32,8 @@ void game_destroy(Game *game, int exit_status){
 
   renderer_destroy(game->renderer);
   player_destroy(game->player);
-  SDL_Quit();
   free(game);
   game = NULL;
+  SDL_Quit();
   exit(exit_status);
 }
