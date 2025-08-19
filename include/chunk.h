@@ -13,9 +13,7 @@ typedef struct{
   bool is_dirty;
 }Chunk;
 
-typedef struct{
-  Chunk* chunks;
-  size_t chunk_x, chunk_y, chunk_z;
-}World;
+void chunk_create_chunk();
+void chunk_destroy_chunk(Chunk* chunk);
 
 #endif
