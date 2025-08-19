@@ -24,7 +24,7 @@ int main (){
    
     input_poll(game);
     game_update(game);
-    renderer_render(game->renderer, game->player, game->map);
+    renderer_render(game->renderer, game->player);
     
     b=SDL_GetTicks();
     total = total + (b-a);

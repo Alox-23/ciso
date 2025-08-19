@@ -23,7 +23,7 @@ TextureManager* texturemanager_create(size_t num_textures, SDL_Renderer* rendere
 
   texture_manager->texture_width = texture_width;
   texture_manager->texture_height = texture_height;
- 
+
   texture_manager->textures = calloc(num_textures+1, sizeof(SDL_Texture*));
   if (!texture_manager->textures){
     printf("failed to dynamicly allocate space for TextureManager->textures\n");

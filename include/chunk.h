@@ -7,7 +7,7 @@
 #include "../include/utils.h"
 #include "../include/texturemanager.h"
 
-#define CHUNK_SIZE 16
+#define CHUNK_SIZE 32
 
 typedef struct{
   uint8_t tiles[CHUNK_SIZE][CHUNK_SIZE][CHUNK_SIZE];

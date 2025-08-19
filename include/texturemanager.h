@@ -12,6 +12,7 @@ typedef struct{
   size_t texture_count;
   int texture_width;
   int texture_height;
+  int texture_z;
 }TextureManager;
 
 TextureManager* texturemanager_create(size_t num_textures, SDL_Renderer* renderer, int texture_width, int texture_height);

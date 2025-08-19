@@ -45,6 +45,6 @@ Vector2 rotate(Vector2 v, double theta){
 Vector2 isometric_to_screen(Vector3 vi, Vector2 s){
   Vector2 vs;
   vs.x = (vi.x * 0.5 * s.x) + (vi.y * -0.5 * s.x);
-  vs.y = (vi.x * 0.25 * s.y) + (vi.y * 0.25 * s.y) + vi.z;
+  vs.y = (vi.x * 0.25 * s.y) + (vi.y * 0.25 * s.y) - vi.z * (s.y / 2);
   return vs;
 }

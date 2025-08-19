@@ -18,5 +18,12 @@ test:
 	$(CC) $(FLAGS) -o bin/test src/texturemanager.c src/test.c $(LIBS)
 	./bin/test
 
+profmem:
+	valgrind --tool=massif --massif-out-file=profile.out ./$(TARGET)
+	ms_print profile.out
+
+prof:
+	valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all  ./$(TARGET)
+
 install:
 	sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev libsdl2-net-dev

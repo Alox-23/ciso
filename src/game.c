@@ -12,9 +12,6 @@ Game* game_create(){
 
   game->player = player_create();
   if (!game->player) return NULL;
-  
-  game->map = map_create(128, 128);
-  if (!game->map) return NULL;
 
   game->keystate = SDL_GetKeyboardState(NULL);
   
@@ -35,7 +32,6 @@ void game_destroy(Game *game, int exit_status){
 
   renderer_destroy(game->renderer);
   player_destroy(game->player);
-  map_destroy(game->map);
   SDL_Quit();
   free(game);
   game = NULL;

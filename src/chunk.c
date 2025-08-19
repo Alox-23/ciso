@@ -60,6 +60,9 @@ void chunk_update_cache(Chunk* chunk, SDL_Renderer* renderer, TextureManager* te
         iv.z = z;
 
         sv = isometric_to_screen(iv, scale);
+        
+        sv.x = sv.x - (texture_manager->texture_width/2) + texture_manager->texture_width*CHUNK_SIZE/2;
+        sv.y = sv.y - (texture_manager->texture_width/2) + texture_manager->texture_height*CHUNK_SIZE/2;
 
         rect.x = sv.x;
         rect.y = sv.y;
