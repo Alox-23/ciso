@@ -9,13 +9,13 @@
 
 typedef struct{
   uint8_t tiles[CHUNK_SIZE][CHUNK_SIZE];
-  SDL_Texture* texture;
+  SDL_Texture* cached_texture;
   bool is_dirty;
 }Chunk;
 
 typedef struct{
   Chunk* chunks;
-  int chunk_x, chunk_y, chunk_z;
+  size_t chunk_x, chunk_y, chunk_z;
 }World;
 
 #endif
