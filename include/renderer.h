@@ -6,6 +6,7 @@
 #include "player.h"
 #include "map.h"
 #include "texturemanager.h"
+#include "chunk.h"
 
 typedef struct{
   double scale_2d;
@@ -14,6 +15,7 @@ typedef struct{
   SDL_Renderer *sdl_renderer;
   SDL_Window *window; 
   TextureManager* texture_manager;
+  Chunk chunk;
 }Renderer;
 
 Renderer* renderer_create();

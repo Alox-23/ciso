@@ -3,6 +3,7 @@
 #include "../include/map.h"
 #include "../include/texturemanager.h"
 #include "../include/utils.h"
+#include "../include/chunk.h"
 
 Renderer* renderer_create(){
   Renderer* renderer = malloc(sizeof(Renderer));
@@ -31,6 +32,8 @@ Renderer* renderer_create(){
 
   texturemanager_add_texture(renderer->texture_manager, renderer->sdl_renderer, "assets/green-cube.png");
   
+  renderer->chunk = chunk_create_chunk();
+
   return renderer;
 }
 
@@ -39,8 +42,14 @@ void renderer_render_map_iso(Renderer *renderer, Map *map){
     printf("worng renderer or map parameter in render_map2d_Renderer");
     return;
   }
+  
+  chunk_update_cache(&renderer->chunk, renderer->sdl_renderer, renderer->texture_manager);
 
-  SDL_Rect rect;
+  SDL_Rect rect = {0, 0, 32*16, 32*16};
+  SDL_RenderCopy(renderer->sdl_renderer, renderer->chunk.cached_texture, NULL, &rect);
+
+  /*
+   SDL_Rect rect;
   rect.w = 32;
   rect.h = 32;
   Vector2 s;
@@ -61,9 +70,9 @@ void renderer_render_map_iso(Renderer *renderer, Map *map){
         SDL_RenderCopy(renderer->sdl_renderer, texturemanager_get_texture(renderer->texture_manager, map_val), NULL, &rect);
       }
     }
-  }
- 
-}
+  } 
+    */
+ }
 
 void renderer_render_player_2d(Renderer *renderer, Player *player){
   if (!renderer || !player){
