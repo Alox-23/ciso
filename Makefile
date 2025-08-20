@@ -1,5 +1,5 @@
 CC = gcc
-FLAGS = -Wall -Wextra -O2
+FLAGS = -Wall -Wextra -O2 -fsanitize=address -g
 TARGET = bin/main
 SRC = src/main.c src/input.c src/game.c src/renderer.c src/utils.c src/player.c src/texturemanager.c src/chunk.c
 LIBS = `sdl2-config --cflags --libs` -lSDL2_image -lSDL2_ttf -lm
@@ -19,13 +19,16 @@ test:
 	./bin/test
 
 profmem:
+	$(CC) -o $(TARGET) $(SRC) $(LIBS)
 	valgrind --tool=massif --massif-out-file=profile.out ./$(TARGET)
 	ms_print profile.out
 
 profall:
+	$(CC) -o $(TARGET) $(SRC) $(LIBS)
 	valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --log-file="valgrind.txt" ./$(TARGET)
 
-prof:
+prof:	
+	$(CC) -o $(TARGET) $(SRC) $(LIBS)
 	valgrind --log-file="valgrind.txt" ./$(TARGET)
 
 install:

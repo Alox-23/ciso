@@ -9,8 +9,8 @@ int main (){
   Game* game = game_create();
   if (!game) game_destroy(game, EXIT_FAILURE);
   
-  Uint32 a;
-  Uint32 b;
+  Uint32 a = 0;
+  Uint32 b = 0;
   
   Uint32 total = 0;
   Uint32 count = 0;

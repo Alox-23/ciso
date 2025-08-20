@@ -1,129 +1,65 @@
-==11860== Memcheck, a memory error detector
-==11860== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
-==11860== Using Valgrind-3.24.0 and LibVEX; rerun with -h for copyright info
-==11860== Command: ./bin/main
-==11860== Parent PID: 11859
-==11860== 
-==11860== realloc() with size 0
-==11860==    at 0x4851E10: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11860==    by 0xEACD12E: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.575.64.03)
-==11860==    by 0xDF3B936: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.575.64.03)
-==11860==    by 0xDF97381: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.575.64.03)
-==11860==    by 0xDF3B012: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.575.64.03)
-==11860==    by 0x40055C3: call_init (dl-init.c:120)
-==11860==    by 0x40055C3: _dl_init (dl-init.c:121)
-==11860==    by 0x4002551: _dl_catch_exception (dl-catch.c:215)
-==11860==    by 0x400CB88: dl_open_worker (dl-open.c:799)
-==11860==    by 0x40024BB: _dl_catch_exception (dl-catch.c:241)
-==11860==    by 0x400CFB3: _dl_open (dl-open.c:874)
-==11860==    by 0x4CC0683: dlopen_doit (dlopen.c:56)
-==11860==    by 0x40024BB: _dl_catch_exception (dl-catch.c:241)
-==11860==  Address 0xd177fe0 is 0 bytes after a block of size 0 alloc'd
-==11860==    at 0x484A858: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11860==    by 0xEACD11E: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.575.64.03)
-==11860==    by 0xDF3B936: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.575.64.03)
-==11860==    by 0xDF97381: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.575.64.03)
-==11860==    by 0xDF3B012: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.575.64.03)
-==11860==    by 0x40055C3: call_init (dl-init.c:120)
-==11860==    by 0x40055C3: _dl_init (dl-init.c:121)
-==11860==    by 0x4002551: _dl_catch_exception (dl-catch.c:215)
-==11860==    by 0x400CB88: dl_open_worker (dl-open.c:799)
-==11860==    by 0x40024BB: _dl_catch_exception (dl-catch.c:241)
-==11860==    by 0x400CFB3: _dl_open (dl-open.c:874)
-==11860==    by 0x4CC0683: dlopen_doit (dlopen.c:56)
-==11860==    by 0x40024BB: _dl_catch_exception (dl-catch.c:241)
-==11860== 
-==11860== posix_memalign() invalid size value: 0
-==11860==    at 0x4852A08: posix_memalign (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11860==    by 0xEACD165: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.575.64.03)
-==11860==    by 0xDF3B936: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.575.64.03)
-==11860==    by 0xDF97381: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.575.64.03)
-==11860==    by 0xDF3B012: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.575.64.03)
-==11860==    by 0x40055C3: call_init (dl-init.c:120)
-==11860==    by 0x40055C3: _dl_init (dl-init.c:121)
-==11860==    by 0x4002551: _dl_catch_exception (dl-catch.c:215)
-==11860==    by 0x400CB88: dl_open_worker (dl-open.c:799)
-==11860==    by 0x40024BB: _dl_catch_exception (dl-catch.c:241)
-==11860==    by 0x400CFB3: _dl_open (dl-open.c:874)
-==11860==    by 0x4CC0683: dlopen_doit (dlopen.c:56)
-==11860==    by 0x40024BB: _dl_catch_exception (dl-catch.c:241)
-==11860== 
-==11860== Conditional jump or move depends on uninitialised value(s)
-==11860==    at 0x10A594: chunk_update_cache (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x109943: renderer_render_map_iso (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x109B25: renderer_render (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x10951E: main (in /home/hackerman/ciso/bin/main)
-==11860== 
-==11860== Conditional jump or move depends on uninitialised value(s)
-==11860==    at 0x4915EF7: ??? (in /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.3200.2)
-==11860==    by 0x10A59A: chunk_update_cache (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x109943: renderer_render_map_iso (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x109B25: renderer_render (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x10951E: main (in /home/hackerman/ciso/bin/main)
-==11860== 
-==11860== Use of uninitialised value of size 8
-==11860==    at 0x4915F00: ??? (in /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.3200.2)
-==11860==    by 0x10A59A: chunk_update_cache (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x109943: renderer_render_map_iso (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x109B25: renderer_render (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x10951E: main (in /home/hackerman/ciso/bin/main)
-==11860== 
-==11860== Invalid read of size 8
-==11860==    at 0x4915F00: ??? (in /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.3200.2)
-==11860==    by 0x109B67: renderer_destroy (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x1097AE: game_destroy (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x10955D: main (in /home/hackerman/ciso/bin/main)
-==11860==  Address 0xda6f700 is 0 bytes inside a block of size 144 free'd
-==11860==    at 0x484D8BF: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11860==    by 0x4915E0E: ??? (in /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.3200.2)
-==11860==    by 0x4917A0C: ??? (in /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.3200.2)
-==11860==    by 0x49DD60A: ??? (in /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.3200.2)
-==11860==    by 0x109B55: renderer_destroy (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x1097AE: game_destroy (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x10955D: main (in /home/hackerman/ciso/bin/main)
-==11860==  Block was alloc'd at
-==11860==    at 0x4851BE3: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11860==    by 0x4915FFF: ??? (in /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.3200.2)
-==11860==    by 0x10A5BE: chunk_update_cache (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x109943: renderer_render_map_iso (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x109B25: renderer_render (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x10951E: main (in /home/hackerman/ciso/bin/main)
-==11860== 
-==11860== Invalid read of size 8
-==11860==    at 0x4915F00: ??? (in /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.3200.2)
-==11860==    by 0x10A45D: texturemanager_destroy (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x109B70: renderer_destroy (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x1097AE: game_destroy (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x10955D: main (in /home/hackerman/ciso/bin/main)
-==11860==  Address 0xd2426f0 is 0 bytes inside a block of size 144 free'd
-==11860==    at 0x484D8BF: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11860==    by 0x4915E0E: ??? (in /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.3200.2)
-==11860==    by 0x4917A0C: ??? (in /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.3200.2)
-==11860==    by 0x49DD60A: ??? (in /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.3200.2)
-==11860==    by 0x109B55: renderer_destroy (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x1097AE: game_destroy (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x10955D: main (in /home/hackerman/ciso/bin/main)
-==11860==  Block was alloc'd at
-==11860==    at 0x4851BE3: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11860==    by 0x4915FFF: ??? (in /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.3200.2)
-==11860==    by 0x10A075: texturemanager_create (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x109877: renderer_create (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x109729: game_create (in /home/hackerman/ciso/bin/main)
-==11860==    by 0x1094A8: main (in /home/hackerman/ciso/bin/main)
-==11860== 
-==11860== 
-==11860== HEAP SUMMARY:
-==11860==     in use at exit: 126,324 bytes in 1,141 blocks
-==11860==   total heap usage: 147,780 allocs, 146,639 frees, 2,800,038,795 bytes allocated
-==11860== 
-==11860== LEAK SUMMARY:
-==11860==    definitely lost: 5,752 bytes in 5 blocks
-==11860==    indirectly lost: 7,138 bytes in 4 blocks
-==11860==      possibly lost: 0 bytes in 0 blocks
-==11860==    still reachable: 113,378 bytes in 1,131 blocks
-==11860==         suppressed: 56 bytes in 1 blocks
-==11860== Rerun with --leak-check=full to see details of leaked memory
-==11860== 
-==11860== Use --track-origins=yes to see where uninitialised values come from
-==11860== For lists of detected and suppressed errors, rerun with: -s
-==11860== ERROR SUMMARY: 7 errors from 7 contexts (suppressed: 0 from 0)
+==9230== Memcheck, a memory error detector
+==9230== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==9230== Using Valgrind-3.24.0 and LibVEX; rerun with -h for copyright info
+==9230== Command: ./bin/main
+==9230== Parent PID: 9229
+==9230== 
+==9230== realloc() with size 0
+==9230==    at 0x4851E10: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9230==    by 0xEAE512E: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.575.64.03)
+==9230==    by 0xDF53936: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.575.64.03)
+==9230==    by 0xDFAF381: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.575.64.03)
+==9230==    by 0xDF53012: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.575.64.03)
+==9230==    by 0x40055C3: call_init (dl-init.c:120)
+==9230==    by 0x40055C3: _dl_init (dl-init.c:121)
+==9230==    by 0x4002551: _dl_catch_exception (dl-catch.c:215)
+==9230==    by 0x400CB88: dl_open_worker (dl-open.c:799)
+==9230==    by 0x40024BB: _dl_catch_exception (dl-catch.c:241)
+==9230==    by 0x400CFB3: _dl_open (dl-open.c:874)
+==9230==    by 0x4CC0683: dlopen_doit (dlopen.c:56)
+==9230==    by 0x40024BB: _dl_catch_exception (dl-catch.c:241)
+==9230==  Address 0xd98ffe0 is 0 bytes after a block of size 0 alloc'd
+==9230==    at 0x484A858: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9230==    by 0xEAE511E: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.575.64.03)
+==9230==    by 0xDF53936: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.575.64.03)
+==9230==    by 0xDFAF381: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.575.64.03)
+==9230==    by 0xDF53012: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.575.64.03)
+==9230==    by 0x40055C3: call_init (dl-init.c:120)
+==9230==    by 0x40055C3: _dl_init (dl-init.c:121)
+==9230==    by 0x4002551: _dl_catch_exception (dl-catch.c:215)
+==9230==    by 0x400CB88: dl_open_worker (dl-open.c:799)
+==9230==    by 0x40024BB: _dl_catch_exception (dl-catch.c:241)
+==9230==    by 0x400CFB3: _dl_open (dl-open.c:874)
+==9230==    by 0x4CC0683: dlopen_doit (dlopen.c:56)
+==9230==    by 0x40024BB: _dl_catch_exception (dl-catch.c:241)
+==9230== 
+==9230== posix_memalign() invalid size value: 0
+==9230==    at 0x4852A08: posix_memalign (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9230==    by 0xEAE5165: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.575.64.03)
+==9230==    by 0xDF53936: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.575.64.03)
+==9230==    by 0xDFAF381: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.575.64.03)
+==9230==    by 0xDF53012: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.575.64.03)
+==9230==    by 0x40055C3: call_init (dl-init.c:120)
+==9230==    by 0x40055C3: _dl_init (dl-init.c:121)
+==9230==    by 0x4002551: _dl_catch_exception (dl-catch.c:215)
+==9230==    by 0x400CB88: dl_open_worker (dl-open.c:799)
+==9230==    by 0x40024BB: _dl_catch_exception (dl-catch.c:241)
+==9230==    by 0x400CFB3: _dl_open (dl-open.c:874)
+==9230==    by 0x4CC0683: dlopen_doit (dlopen.c:56)
+==9230==    by 0x40024BB: _dl_catch_exception (dl-catch.c:241)
+==9230== 
+==9230== 
+==9230== HEAP SUMMARY:
+==9230==     in use at exit: 126,312 bytes in 1,141 blocks
+==9230==   total heap usage: 157,587 allocs, 156,446 frees, 2,798,191,369 bytes allocated
+==9230== 
+==9230== LEAK SUMMARY:
+==9230==    definitely lost: 5,752 bytes in 5 blocks
+==9230==    indirectly lost: 7,126 bytes in 4 blocks
+==9230==      possibly lost: 0 bytes in 0 blocks
+==9230==    still reachable: 113,378 bytes in 1,131 blocks
+==9230==         suppressed: 56 bytes in 1 blocks
+==9230== Rerun with --leak-check=full to see details of leaked memory
+==9230== 
+==9230== For lists of detected and suppressed errors, rerun with: -s
+==9230== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)

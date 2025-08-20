@@ -84,10 +84,10 @@ void renderer_destroy(Renderer *renderer){
   if(!renderer){
     return;
   }
-  SDL_DestroyWindow(renderer->window);
-  SDL_DestroyRenderer(renderer->sdl_renderer);
   chunk_destroy_chunk(&renderer->chunk);
   texturemanager_destroy(renderer->texture_manager);
+  SDL_DestroyWindow(renderer->window);
+  SDL_DestroyRenderer(renderer->sdl_renderer);
   free(renderer);
   renderer = NULL;
 }

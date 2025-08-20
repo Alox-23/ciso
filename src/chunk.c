@@ -3,6 +3,7 @@
 Chunk chunk_create_chunk(){
   Chunk chunk; 
   chunk.is_dirty = true;
+  chunk.cached_texture = NULL;
   memset(chunk.tiles, 1, sizeof(chunk.tiles));
   return chunk;
 }
@@ -27,6 +28,7 @@ void chunk_update_cache(Chunk* chunk, SDL_Renderer* renderer, TextureManager* te
   
   if (chunk->cached_texture) {
     SDL_DestroyTexture(chunk->cached_texture);
+    chunk->cached_texture = NULL;
   }
 
   chunk->cached_texture = SDL_CreateTexture(
@@ -78,5 +80,5 @@ void chunk_update_cache(Chunk* chunk, SDL_Renderer* renderer, TextureManager* te
 
 void chunk_destroy_chunk(Chunk* chunk){
   if (!chunk) return;
-  SDL_DestroyTexture(chunk->cached_texture);
-}
+  if (chunk->cached_texture) SDL_DestroyTexture(chunk->cached_texture);
+
