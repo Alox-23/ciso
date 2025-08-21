@@ -15,8 +15,8 @@ typedef struct{
   bool is_dirty;
 }Chunk;
 
-Chunk chunk_create_chunk();
-void chunk_destroy_chunk(Chunk* chunk);
+void chunk_create(Chunk* chunk);
+void chunk_destroy(Chunk* chunk);
 void chunk_update_cache();
 
 #endif

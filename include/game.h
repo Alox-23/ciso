@@ -6,10 +6,12 @@
 #include <stdbool.h>
 #include "renderer.h"
 #include "player.h"
+#include "world.h"
 
 typedef struct{
   Player *player;
   Renderer *renderer;
+  World* world;
   const Uint8 *keystate;
   double delta_time;
   int state;

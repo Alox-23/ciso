@@ -32,12 +32,12 @@ Renderer* renderer_create(){
 
   texturemanager_add_texture(renderer->texture_manager, renderer->sdl_renderer, "assets/green-cube.png");
   
-  renderer->chunk = chunk_create_chunk();
+  chunk_create(&renderer->chunk);
 
   return renderer;
 }
 
-void renderer_render_map_iso(Renderer *renderer){
+void renderer_render_world(Renderer *renderer){
   if (!renderer){
     printf("worng renderer parameter in render_map2d_Renderer");
     return;
@@ -74,7 +74,7 @@ void renderer_render(Renderer *renderer, Player *player){
   SDL_SetRenderDrawColor(renderer->sdl_renderer, 0, 0, 0, 255);
   SDL_RenderClear(renderer->sdl_renderer);
 
-  renderer_render_map_iso(renderer);
+  renderer_render_world(renderer);
   renderer_render_player_2d(renderer, player);
   
   SDL_RenderPresent(renderer->sdl_renderer);
@@ -84,7 +84,7 @@ void renderer_destroy(Renderer *renderer){
   if(!renderer){
     return;
   }
-  chunk_destroy_chunk(&renderer->chunk);
+  chunk_destroy(&renderer->chunk);
   texturemanager_destroy(renderer->texture_manager);
   SDL_DestroyRenderer(renderer->sdl_renderer);
   SDL_DestroyWindow(renderer->window);

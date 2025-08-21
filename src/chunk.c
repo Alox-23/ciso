@@ -1,11 +1,11 @@
 #include "../include/chunk.h"
 
-Chunk chunk_create_chunk(){
-  Chunk chunk; 
-  chunk.is_dirty = true;
-  chunk.cached_texture = NULL;
-  memset(chunk.tiles, 1, sizeof(chunk.tiles));
-  return chunk;
+void chunk_create(Chunk* chunk){
+  if (!chunk) return;
+
+  chunk->is_dirty = true;
+  chunk->cached_texture = NULL;
+  memset(chunk->tiles, 1, sizeof(chunk->tiles));
 }
 
 void chunk_update_cache(Chunk* chunk, SDL_Renderer* renderer, TextureManager* texture_manager){
@@ -78,7 +78,7 @@ void chunk_update_cache(Chunk* chunk, SDL_Renderer* renderer, TextureManager* te
   chunk->is_dirty = false;
 }
 
-void chunk_destroy_chunk(Chunk* chunk){
+void chunk_destroy(Chunk* chunk){
   if (!chunk) return;
   if (chunk->cached_texture) { 
     SDL_DestroyTexture(chunk->cached_texture);

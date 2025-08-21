@@ -1,5 +1,6 @@
 #include "../include/game.h"
 #include "../include/player.h"
+#include "../include/world.h"
 
 Game* game_create(){
   Game* game = malloc(sizeof(Game));
@@ -12,6 +13,9 @@ Game* game_create(){
 
   game->player = player_create();
   if (!game->player) return NULL;
+
+  game->world = world_create(5, 5, 5);
+  if (!game->world) return NULL;
 
   game->keystate = SDL_GetKeyboardState(NULL);
   
@@ -32,6 +36,7 @@ void game_destroy(Game *game, int exit_status){
 
   player_destroy(game->player);
   renderer_destroy(game->renderer);
+  world_destroy(game->world);
   free(game);
   game = NULL;
   SDL_Quit();

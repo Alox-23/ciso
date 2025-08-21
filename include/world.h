@@ -9,7 +9,8 @@ typedef struct{
   size_t chunk_x, chunk_y, chunk_z;
 }World;
 
-World* world_create_world(size_t chunk_x, size_t chunk_y, size_t chunk_z);
-void world_destroy_world(World* world);
+World* world_create(size_t chunk_x, size_t chunk_y, size_t chunk_z);
+Chunk* world_get_chunk(World* world, size_t chunk_x, size_t chunk_y, size_t chunk_z);
+void world_destroy(World* world);
 
 #endif

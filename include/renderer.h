@@ -19,7 +19,7 @@ typedef struct{
 
 Renderer* renderer_create();
 void renderer_render_player_2d(Renderer *renderer, Player *player);
-void renderer_render_map_iso(Renderer *renderer);
+void renderer_render_world(Renderer *renderer);
 void renderer_render(Renderer *renderer, Player *player);
 void renderer_destroy(Renderer *renderer);
 
