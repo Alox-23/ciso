@@ -25,7 +25,7 @@ Renderer* renderer_create(){
     return NULL;
   }
 
-  renderer->texture_manager = texturemanager_create(5, renderer->sdl_renderer, 32, 32);
+  renderer->texture_manager = texturemanager_create(1, renderer->sdl_renderer, 32, 32);
   if (!renderer->texture_manager){
     return NULL;
   }
@@ -86,8 +86,8 @@ void renderer_destroy(Renderer *renderer){
   }
   chunk_destroy_chunk(&renderer->chunk);
   texturemanager_destroy(renderer->texture_manager);
-  SDL_DestroyWindow(renderer->window);
   SDL_DestroyRenderer(renderer->sdl_renderer);
+  SDL_DestroyWindow(renderer->window);
   free(renderer);
   renderer = NULL;
 }

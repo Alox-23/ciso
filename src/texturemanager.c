@@ -150,7 +150,7 @@ void texturemanager_destroy(TextureManager *texture_manager){
     return;
   }
 
-  for (size_t i = 0; i < texture_manager->texture_capacity; i++){
+  for (size_t i = 0; i <= texture_manager->texture_capacity; i++){
     if (texture_manager->textures[i]){
       SDL_DestroyTexture(texture_manager->textures[i]);
       texture_manager->textures[i] = NULL;
